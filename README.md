@@ -22,12 +22,7 @@ source .env
 yarn run algob deploy
 ```
 
-### 5. Opt into smart contract
-```
-yarn run algob run scripts/actions/optIn.js
-```
-
-### 6. Debug app call for add counter
+### 4. Debug app call for add counter
 ```
 yarn run algob run scripts/debug/add_debugger.js
 ```
@@ -35,7 +30,7 @@ yarn run algob run scripts/debug/add_debugger.js
 The output json file can be found in ./assets folder.
 
 
-### 7. Create message pack file for TEAL debugger
+### 5. Create message pack file for TEAL debugger
 ```
 yarn run algob run scripts/debug/add_dryrun.js
 ```
