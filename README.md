@@ -1,5 +1,5 @@
 # Algo Builder dry run and TEAL debugger demo
-Demostrates the Algo Builder dry run feature and TEAL debugger using the smart contracts created in [this](https://github.com/Algo-Foundry/stateful-sc) assignment.
+Demostrates the Algo Builder dry run feature and TEAL debugger with a counter application.
 
 ## Setup instructions
 
@@ -27,9 +27,9 @@ yarn run algob deploy
 yarn run algob run scripts/actions/optIn.js
 ```
 
-### 6. Debug app call for attack
+### 6. Debug app call for add counter
 ```
-yarn run algob run scripts/debug/attack_dryrun.js
+yarn run algob run scripts/debug/add_debugger.js
 ```
 
 The output json file can be found in ./assets folder.
@@ -37,7 +37,7 @@ The output json file can be found in ./assets folder.
 
 ### 7. Create message pack file for TEAL debugger
 ```
-yarn run algob run scripts/debug/attack_debug.js
+yarn run algob run scripts/debug/add_dryrun.js
 ```
 
 #### Debug using TEAL debugger

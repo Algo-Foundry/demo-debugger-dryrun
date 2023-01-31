@@ -1,20 +1,16 @@
-const { convert, Tealdbg, signTransactions } = require("@algo-builder/algob");
-const { types } = require("@algo-builder/web");
+const { convert } = require("@algo-builder/algob");
 const algosdk = require("algosdk");
 const fs = require("fs");
 
 async function run(runtimeEnv, deployer) {
-    const acc1 = deployer.accountsByName.get("acc1");
-    const approvalFile = "game_approval.py";
-    const clearStateFile = "game_clearstate.py";
+    const master = deployer.accountsByName.get("master");
 
     // get app info
-    const gameApp = deployer.getApp(approvalFile, clearStateFile);
+    const app = deployer.getApp("Counter App");
+    const appID = app.appID;
 
-    const gameAppAddress = gameApp.applicationAccount;
-    console.log("app account address:", gameAppAddress);
-
-    const attackAppArgs = ["Attack"].map(convert.stringToBytes);
+    // call app to "Add"
+    const appArgs = ["Add"].map(convert.stringToBytes);
 
     /**
      * Debug using TEAL debugger
@@ -24,13 +20,13 @@ async function run(runtimeEnv, deployer) {
      */
     const suggestedParams = await deployer.algodClient.getTransactionParams().do();
     const tx = algosdk.makeApplicationNoOpTxn(
-        acc1.addr,
+        master.addr,
         suggestedParams,
-        gameApp.appID,
-        attackAppArgs
+        appID,
+        appArgs
     );
 
-    const signedCallTxn = tx.signTxn(acc1.sk);
+    const signedCallTxn = tx.signTxn(master.sk);
 
     const drr = await algosdk.createDryrun({
         client: deployer.algodClient,
