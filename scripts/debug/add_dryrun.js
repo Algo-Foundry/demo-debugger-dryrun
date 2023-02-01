@@ -1,4 +1,4 @@
-const { convert, readAppGlobalState, Tealdbg } = require("@algo-builder/algob");
+const { convert, Tealdbg } = require("@algo-builder/algob");
 const { types } = require("@algo-builder/web");
 
 async function run(runtimeEnv, deployer) {
